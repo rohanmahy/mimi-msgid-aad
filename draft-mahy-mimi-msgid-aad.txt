@@ -8,8 +8,9 @@ Intended status: Informational                              3 March 2025
 Expires: 4 September 2025
 
 
-                           TODO - Your title
-                  draft-todo-yourname-protocol-latest
+  Conveying the More Instant Messaging Interoperability Message ID in
+         Messaging Layer Security Additional Authenticated Data
+                    draft-mahy-mimi-msgid-aad-latest
 
 Abstract
 
@@ -21,8 +22,8 @@ About This Document
 
    The latest revision of this draft can be found at
    https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-todo-yourname-
-   protocol/.
+   be found at https://datatracker.ietf.org/doc/draft-mahy-mimi-msgid-
+   aad/.
 
    Discussion of this document takes place on the WG Working Group
    mailing list (mailto:WG@example.com), which is archived at
