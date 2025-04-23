@@ -37,14 +37,19 @@ informative:
 
 --- abstract
 
-TODO Abstract
-
+The More Instant Messaging Interoperability (MIMI) content format defines a MIMI Message ID, communicated only to members of the Messaging Layer Security (MLS) group in which the message was sent.
+This document defines a way to share a Message ID in the MLS Additional Authenticated Data (AAD) so it is visible to MIMI providers.
 
 --- middle
 
 # Introduction
 
-TODO Introduction
+Many messaging protocols and formats have a Message ID.
+The MIMI content format defines how to calculate a MIMI Message ID {{Section 3.3 of !I-D.ietf-mimi-content}} for an application message.
+A MIMI Message ID is currently only shared end-to-end encrypted with members of the MLS {{!RFC9420}} group in which the message was sent.
+This document defines an optional mechanism to share a Message ID in the
+MLS AAD, so it is visible to intermediary providers.
+This greatly facilitates debugging and troubleshooting, but causes a modest reduction in privacy.
 
 
 # Conventions and Definitions
@@ -52,14 +57,31 @@ TODO Introduction
 {::boilerplate bcp14-tagged}
 
 
+# Mechanism
+
+This document defines a new Safe AAD `message_id` component as described in {{Section 4.9 of !I-D.ietf-mls-extensions}}.
+
+When the content of an MLS application message is a MIMI content message (media type `application/mimi-content`), if the `message_id` component is present inside `SafeAAD.aad_items`, it MUST contain the MIMI content Message ID calculated as described in {{Section 3.3 of !I-D.ietf-mimi-content}}.
+
+>To the extent that other application formats or media types have a Message ID, the Message ID for an application message of that type or format MAY be conveyed in this extension.
+
+
 # Security Considerations
 
-TODO Security
+An attacker with access to a fragment of message history, and the message logs of a MIMI provider in the path of a message could potentially learn more about the participants of a particular MIMI room or the room's corresponding MLS group.
 
 
 # IANA Considerations
 
-This document has no IANA actions.
+## message_id MLS Component Type
+
+This document registers a new MLS Component Type in the Specification Required range with the following template:
+
+- Value: TBD (new assignment by IANA)
+- Name: message_id
+- Where: AD
+- Recommended: Y
+- Reference: RFC XXXX
 
 
 --- back
