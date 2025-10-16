@@ -1,3 +1,3 @@
-# Automatically generated CODEOWNERS
-# Regenerate with `make update-codeowners`
-draft-mahy-mimi-msgid-aad.md rohan.mahy@gmail.com
+# Manually generated CODEOWNERS
+# DO NOT Regenerate with `make update-codeowners`
+draft-mahy-mimi-msgid-aad.md @rohanmahy
