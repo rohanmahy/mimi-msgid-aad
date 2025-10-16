@@ -27,7 +27,7 @@ venue:
 author:
  -
     fullname: "Rohan Mahy"
-    organization: Your Organization Here
+    organization:
     email: "rohan.mahy@gmail.com"
 
 normative:
@@ -45,7 +45,7 @@ This document defines a way to share a Message ID in the MLS Additional Authenti
 # Introduction
 
 Many messaging protocols and formats have a Message ID.
-The MIMI content format defines how to calculate a MIMI Message ID {{Section 3.3 of !I-D.ietf-mimi-content}} for an application/mimi-content application message.
+The MIMI content format defines how to calculate a MIMI Message ID (See {{Section 3.3 of !I-D.ietf-mimi-content}}) for an application/mimi-content application message.
 A MIMI Message ID is currently only shared end-to-end encrypted with members of the MLS {{!RFC9420}} group in which the message was sent.
 This document defines an optional mechanism to share a Message ID in the
 MLS AAD, so it is visible to intermediary providers.
@@ -63,12 +63,12 @@ This document defines a new Safe AAD `message_id` component as described in {{Se
 
 When the content of an MLS application message is a MIMI content message (media type `application/mimi-content`), if the `message_id` component is present inside `SafeAAD.aad_items`, it MUST contain the MIMI content Message ID calculated as described in {{Section 3.3 of !I-D.ietf-mimi-content}}.
 
->To the extent that other application formats or media types have a Message ID, the Message ID for an application message of that type or format MAY be conveyed in this extension.
+>To the extent that other application formats or media types have a Message ID, the Message ID for an application message of that type or format MAY be conveyed in this extension, using a message ID appropriate to the media type of the content.
 
 
 # Security Considerations
 
-An attacker or provider with access to a fragment of message history, and the message logs of a MIMI provider in the path of a message could potentially learn more about the participants of a particular MIMI room or the room's corresponding MLS group if it can see message ID.
+An attacker or provider with access to a fragment of message history, and the message logs of a MIMI provider in the path of a message could potentially learn more about the participants of a particular MIMI room or the room's corresponding MLS group if it can see message IDs.
 
 
 # IANA Considerations
