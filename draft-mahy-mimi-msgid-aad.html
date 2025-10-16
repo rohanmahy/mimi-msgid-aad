@@ -10,26 +10,26 @@
        The More Instant Messaging Interoperability (MIMI) content format defines a MIMI Message ID, communicated only to members of the Messaging Layer Security (MLS) group in which the message was sent.
 This document defines a way to share a Message ID in the MLS Additional Authenticated Data (AAD) so it is visible to MIMI providers. 
     " name="description">
-<meta content="xml2rfc 3.28.1" name="generator">
+<meta content="xml2rfc 3.30.2" name="generator">
 <meta content="message ID" name="keyword">
 <meta content="AAD" name="keyword">
 <meta content="Additional Authenticated Data" name="keyword">
 <meta content="message ID component" name="keyword">
 <meta content="draft-mahy-mimi-msgid-aad-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.28.1
-    Python 3.12.10
+  xml2rfc 3.30.2
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
-    lxml 5.3.0
-    platformdirs 4.3.7
+    lxml 5.3.1
+    platformdirs 4.4.0
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
-    wcwidth 0.2.13
+    requests 2.32.5
+    setuptools 80.9.0
+    wcwidth 0.2.14
 -->
 <link href="draft-mahy-mimi-msgid-aad.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1048,11 +1048,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">MIMI Message ID in AAD</td>
-<td class="right">April 2025</td>
+<td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Mahy</td>
-<td class="center">Expires 25 October 2025</td>
+<td class="center">Expires 19 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,17 +1065,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-mahy-mimi-msgid-aad-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-04-23" class="published">23 April 2025</time>
+<time datetime="2025-10-16" class="published">16 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-10-25">25 October 2025</time></dd>
+<dd class="expires"><time datetime="2026-04-19">19 April 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">R. Mahy</div>
-<div class="org">Your Organization Here</div>
 </div>
 </dd>
 </dl>
@@ -1121,7 +1120,7 @@ This document defines a way to share a Message ID in the MLS Additional Authenti
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1189,7 +1188,7 @@ This document defines a way to share a Message ID in the MLS Additional Authenti
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">Many messaging protocols and formats have a Message ID.
-The MIMI content format defines how to calculate a MIMI Message ID <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-06#section-3.3" class="relref">Section 3.3</a> of [<a href="#I-D.ietf-mimi-content" class="cite xref">I-D.ietf-mimi-content</a>]</span> for an application message.
+The MIMI content format defines how to calculate a MIMI Message ID (See <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-07#section-3.3" class="relref">Section 3.3</a> of [<a href="#I-D.ietf-mimi-content" class="cite xref">I-D.ietf-mimi-content</a>]</span>) for an application/mimi-content application message.
 A MIMI Message ID is currently only shared end-to-end encrypted with members of the MLS <span>[<a href="#RFC9420" class="cite xref">RFC9420</a>]</span> group in which the message was sent.
 This document defines an optional mechanism to share a Message ID in the
 MLS AAD, so it is visible to intermediary providers.
@@ -1212,11 +1211,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-mechanism">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-mechanism" class="section-name selfRef">Mechanism</a>
       </h2>
-<p id="section-3-1">This document defines a new Safe AAD <code>message_id</code> component as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-extensions-06#section-4.9" class="relref">Section 4.9</a> of [<a href="#I-D.ietf-mls-extensions" class="cite xref">I-D.ietf-mls-extensions</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">When the content of an MLS application message is a MIMI content message (media type <code>application/mimi-content</code>), if the <code>message_id</code> component is present inside <code>SafeAAD.aad_items</code>, it <span class="bcp14">MUST</span> contain the MIMI content Message ID calculated as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-06#section-3.3" class="relref">Section 3.3</a> of [<a href="#I-D.ietf-mimi-content" class="cite xref">I-D.ietf-mimi-content</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-1">This document defines a new Safe AAD <code>message_id</code> component as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-extensions-08#section-4.9" class="relref">Section 4.9</a> of [<a href="#I-D.ietf-mls-extensions" class="cite xref">I-D.ietf-mls-extensions</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">When the content of an MLS application message is a MIMI content message (media type <code>application/mimi-content</code>), if the <code>message_id</code> component is present inside <code>SafeAAD.aad_items</code>, it <span class="bcp14">MUST</span> contain the MIMI content Message ID calculated as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-07#section-3.3" class="relref">Section 3.3</a> of [<a href="#I-D.ietf-mimi-content" class="cite xref">I-D.ietf-mimi-content</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3-3.1">
-          <p id="section-3-3.1.1">To the extent that other application formats or media types have a Message ID, the Message ID for an application message of that type or format <span class="bcp14">MAY</span> be conveyed in this extension.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+          <p id="section-3-3.1.1">To the extent that other application formats or media types have a Message ID, the Message ID for an application message of that type or format <span class="bcp14">MAY</span> be conveyed in this extension, using a message ID appropriate to the media type of the content.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1226,7 +1225,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-security-considerations">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-4-1">An attacker with access to a fragment of message history, and the message logs of a MIMI provider in the path of a message could potentially learn more about the participants of a particular MIMI room or the room's corresponding MLS group.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">An attacker or provider with access to a fragment of message history, and the message logs of a MIMI provider in the path of a message could potentially learn more about the participants of a particular MIMI room or the room's corresponding MLS group if it can see message IDs.<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1269,11 +1268,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dl class="references">
 <dt id="I-D.ietf-mimi-content">[I-D.ietf-mimi-content]</dt>
       <dd>
-<span class="refAuthor">Mahy, R.</span>, <span class="refTitle">"More Instant Messaging Interoperability (MIMI) message content"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mimi-content-06</span>, <time datetime="2025-02-28" class="refDate">28 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-06">https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Mahy, R.</span>, <span class="refTitle">"More Instant Messaging Interoperability (MIMI) message content"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mimi-content-07</span>, <time datetime="2025-07-07" class="refDate">7 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-07">https://datatracker.ietf.org/doc/html/draft-ietf-mimi-content-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-mls-extensions">[I-D.ietf-mls-extensions]</dt>
       <dd>
-<span class="refAuthor">Robert, R.</span>, <span class="refTitle">"The Messaging Layer Security (MLS) Extensions"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mls-extensions-06</span>, <time datetime="2025-02-19" class="refDate">19 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-extensions-06">https://datatracker.ietf.org/doc/html/draft-ietf-mls-extensions-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Robert, R.</span>, <span class="refTitle">"The Messaging Layer Security (MLS) Extensions"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mls-extensions-08</span>, <time datetime="2025-07-21" class="refDate">21 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-extensions-08">https://datatracker.ietf.org/doc/html/draft-ietf-mls-extensions-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
@@ -1305,7 +1304,6 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Rohan Mahy</span></div>
-<div dir="auto" class="left"><span class="org">Your Organization Here</span></div>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:rohan.mahy@gmail.com" class="email">rohan.mahy@gmail.com</a>

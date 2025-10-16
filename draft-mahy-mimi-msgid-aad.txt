@@ -3,9 +3,9 @@
 
 
 More Instant Messaging Interoperability                          R. Mahy
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                             23 April 2025
-Expires: 25 October 2025
+Internet-Draft                                           16 October 2025
+Intended status: Informational                                          
+Expires: 19 April 2026
 
 
   Conveying the More Instant Messaging Interoperability Message ID in
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 October 2025.
+   This Internet-Draft will expire on 19 April 2026.
 
 Copyright Notice
 
@@ -84,14 +84,14 @@ Table of Contents
 1.  Introduction
 
    Many messaging protocols and formats have a Message ID.  The MIMI
-   content format defines how to calculate a MIMI Message ID Section 3.3
-   of [I-D.ietf-mimi-content] for an application message.  A MIMI
-   Message ID is currently only shared end-to-end encrypted with members
-   of the MLS [RFC9420] group in which the message was sent.  This
-   document defines an optional mechanism to share a Message ID in the
-   MLS AAD, so it is visible to intermediary providers.  This greatly
-   facilitates debugging and troubleshooting, but causes a modest
-   reduction in privacy.
+   content format defines how to calculate a MIMI Message ID (See
+   Section 3.3 of [I-D.ietf-mimi-content]) for an application/mimi-
+   content application message.  A MIMI Message ID is currently only
+   shared end-to-end encrypted with members of the MLS [RFC9420] group
+   in which the message was sent.  This document defines an optional
+   mechanism to share a Message ID in the MLS AAD, so it is visible to
+   intermediary providers.  This greatly facilitates debugging and
+   troubleshooting, but causes a modest reduction in privacy.
 
 2.  Conventions and Definitions
 
@@ -114,14 +114,16 @@ Table of Contents
 
       To the extent that other application formats or media types have a
       Message ID, the Message ID for an application message of that type
-      or format MAY be conveyed in this extension.
+      or format MAY be conveyed in this extension, using a message ID
+      appropriate to the media type of the content.
 
 4.  Security Considerations
 
-   An attacker with access to a fragment of message history, and the
-   message logs of a MIMI provider in the path of a message could
-   potentially learn more about the participants of a particular MIMI
-   room or the room's corresponding MLS group.
+   An attacker or provider with access to a fragment of message history,
+   and the message logs of a MIMI provider in the path of a message
+   could potentially learn more about the participants of a particular
+   MIMI room or the room's corresponding MLS group if it can see message
+   IDs.
 
 5.  IANA Considerations
 
@@ -145,16 +147,16 @@ Table of Contents
    [I-D.ietf-mimi-content]
               Mahy, R., "More Instant Messaging Interoperability (MIMI)
               message content", Work in Progress, Internet-Draft, draft-
-              ietf-mimi-content-06, 28 February 2025,
+              ietf-mimi-content-07, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-mimi-
-              content-06>.
+              content-07>.
 
    [I-D.ietf-mls-extensions]
               Robert, R., "The Messaging Layer Security (MLS)
               Extensions", Work in Progress, Internet-Draft, draft-ietf-
-              mls-extensions-06, 19 February 2025,
+              mls-extensions-08, 21 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-mls-
-              extensions-06>.
+              extensions-08>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -177,5 +179,4 @@ Acknowledgments
 Author's Address
 
    Rohan Mahy
-   Your Organization Here
    Email: rohan.mahy@gmail.com
