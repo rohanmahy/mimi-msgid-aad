@@ -77,7 +77,7 @@ An attacker or provider with access to a fragment of message history, and the me
 
 This document registers a new MLS Component Type in the Specification Required range with the following template:
 
-- Value: TBD (new assignment by IANA)
+- Value: TBD (suggested value 0x0040)
 - Name: message_id
 - Where: AD
 - Recommended: Y
